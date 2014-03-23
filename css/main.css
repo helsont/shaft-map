@@ -135,6 +135,12 @@ width: 56px;
 width: 69px;
 margin: 0.5rem;
 }
+
+svg:not(:root) {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
 /* ==========================================================================
    Media Queries
    ========================================================================== */
@@ -171,6 +177,7 @@ position:relative;
 .housing-info-body{
     padding: 1rem;
 }
+
 
 }
 
