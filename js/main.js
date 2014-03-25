@@ -10,13 +10,6 @@ Shaft.DormObject = function (prop) {
     this.suiteSize = prop.suiteSize;
 }
 
-
-
-
-Shaft.DormObject.prototype.toHTML = function () {
-
-}
-
 function appendInfo(dorm) {
   var dormObj=Shaft.DormObjectMap[dorm];
   $(".housing-info-body").empty();
@@ -25,6 +18,22 @@ function appendInfo(dorm) {
  $(".housing-info-body").append("<h2>" + dormObj.name + "</h2>");
  $(".housing-info-body").append(dormObj.description);
 
+}
+
+function appendFilterResults(){
+  console.log("filter");
+  var matchedArray=Shaft.MatchedDorms;
+  $(".filter-results").empty();
+  for (var i in matchedArray){
+    console.log(matchedArray[i]);
+    var resultObj=Shaft.DormObjectMap[matchedArray[i]];
+    $(".filter-results").append("<div class='result "+matchedArray[i]+"'>"+resultObj.name+"</div>");
+    makeClickableResults(matchedArray[i]);
+  }
+}
+
+function makeClickableResults(dorm){
+ $("."+dorm).on("click", function(){ appendInfo(dorm) });
 }
 
 function makeClickable(id, dorm) {
@@ -40,16 +49,59 @@ $("#" + id).on("mouseout", function (e){
 $("#" + id).on("click", function(){ appendInfo(dorm) });
 }
 
-function addFilter(filter){
-  Shaft.filterCriteria.push(filter);
+function makeClickableFilter(id, filter) {
+  $("."+id).click( function(){ 
+    if ($("."+id).hasClass("active")){
+      matchDorm(filter, false);
+      console.log("false");
+    }
+    else{
+    matchDorm(filter, true);
+    console.log("true");
+    }
+    $("."+id).toggleClass("active");
+  });
 }
 
-function matchDorm(){
+function addFilter(filter){
+  var addedFilter=false;
+  for (var i in Shaft.filterCriteria){
+    if (filter===Shaft.filterCriteria[i]){
+      addedFilter=true;
+    }
+  }
+  if (!addedFilter){
+  Shaft.filterCriteria.push(filter);
+  console.log(Shaft.filterCriteria);
+  }
+}
+
+function deleteFilter(filter){
+  var addedFilter=false;
+  for (var i in Shaft.filterCriteria){
+    if (filter===Shaft.filterCriteria[i]){
+      addedFilter=true;
+      Shaft.filterCriteria.splice(i, 1);
+    }
+  }
+  if (!addedFilter){
+  }
+}
+
+function matchDorm(filter, isActive){
+  if (isActive){
+    addFilter(filter);
+  }
+  else{
+    deleteFilter(filter);
+  }
+
+  //empty matchedDorms
+  Shaft.MatchedDorms=[]
   //has to satisfy all conditions for it to be true
-  
   for (var dorm in Shaft.DormObjectMap){
     var isMatch=true;
-    console.log(dorm);
+//console.log(dorm);
     var dormObj=Shaft.DormObjectMap[dorm];
     for (var criteria in Shaft.filterCriteria){
       var criteriaStr=Shaft.filterCriteria[criteria];
@@ -62,7 +114,19 @@ function matchDorm(){
       Shaft.MatchedDorms.push(dorm);
     }
   }
+  console.log(Shaft.MatchedDorms);
+  appendFilterResults();
 }
+
+makeClickableFilter('single', 'single');
+makeClickableFilter('double', 'double');
+makeClickableFilter('ac', 'ac');
+makeClickableFilter('fitness', 'fitness');
+makeClickableFilter('musicRoom', 'musicRoom');
+makeClickableFilter('computerLab', 'computerLab');
+makeClickableFilter('food', 'kitchen');
+makeClickableFilter('stall', 'stallBR');
+
 
 
 
@@ -107,6 +171,8 @@ var schapiro= {
       'computerLab': true,
       'fitness': true,
       'stallBR': true,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -130,7 +196,9 @@ var woodbridge= {
       'ac': false,
       'computerLab': false,
       'fitness': true,
-      'stallBR': false
+      'stallBR': false,
+      'single': false,
+      'double': true
   },
    'suiteSize':{
       'single': false,
@@ -154,7 +222,9 @@ var plimpton = {
       'ac': true,
       'computerLab': true,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -179,7 +249,9 @@ var elliot = {
       'ac': true,
       'computerLab': true,
       'fitness': false,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': true,
   },
    'suiteSize':{
       'single': true,
@@ -204,7 +276,9 @@ var hewitt = {
       'ac': false,
       'computerLab': true,
       'fitness': false,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -228,7 +302,10 @@ var sulz = {
       'ac': true,
       'computerLab': true,
       'fitness': false,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': true,
+
   },
    'suiteSize':{
       'single': true,
@@ -252,7 +329,9 @@ var claremont = {
       'ac': false,
       'computerLab': true,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -276,7 +355,9 @@ var ec = {
       'ac': true,
       'computerLab': true,
       'fitness': true,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -300,7 +381,9 @@ var n600w116 = {
       'ac': false,
       'computerLab': false,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -324,7 +407,9 @@ var n616w116 = {
       'ac': false,
       'computerLab': true,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -348,7 +433,9 @@ var n620w116 = {
       'ac': true,
       'computerLab': true,
       'fitness': false,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -372,7 +459,9 @@ var wien = {
       'ac': false,
       'computerLab': true,
       'fitness': false,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -396,7 +485,9 @@ var furnald = {
       'ac': true,
       'computerLab': true,
       'fitness': false,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': false
   },
    'suiteSize':{
       'single': true,
@@ -420,7 +511,9 @@ var river = {
       'ac': false,
       'computerLab': true,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': false
   },
    'suiteSize':{
       'single': true,
@@ -444,7 +537,9 @@ var hogan = {
       'ac': false,
       'computerLab': true,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': false
   },
    'suiteSize':{
       'single': false,
@@ -468,7 +563,9 @@ var broadway = {
       'ac': true,
       'computerLab': true,
       'fitness': false,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -492,7 +589,9 @@ var ruggles = {
       'ac': false,
       'computerLab': false,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -516,7 +615,9 @@ var nussbaum = {
       'ac': false,
       'computerLab': false,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -540,7 +641,9 @@ var mcbain = {
       'ac': false,
       'computerLab': true,
       'fitness': true,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -564,8 +667,10 @@ var watt = {
       'ac': false,
       'computerLab': false,
       'fitness': false,
-      'stallBR': false
-  },
+      'stallBR': false,
+      'single': true,
+      'double': true
+      },
    'suiteSize':{
       'single': true,
       'double': true,
@@ -588,7 +693,9 @@ var symposium ={
       'ac': false,
       'computerLab': false,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': false,
+      'double': true
   },
    'suiteSize':{
       'single': false,
@@ -612,7 +719,9 @@ var n601w110 = {
       'ac': false,
       'computerLab': false,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -636,7 +745,9 @@ var harmony = {
       'ac': false,
       'computerLab': false,
       'fitness': true,
-      'stallBR': true
+      'stallBR': true,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
@@ -660,7 +771,9 @@ var cathedral = {
       'ac': true,
       'computerLab': false,
       'fitness': false,
-      'stallBR': false
+      'stallBR': false,
+      'single': true,
+      'double': true
   },
    'suiteSize':{
       'single': true,
