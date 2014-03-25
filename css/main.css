@@ -167,6 +167,19 @@ width: 69px;
 height: 70px;
 background-size: cover;
 float:left;
+cursor:pointer;
+}
+
+.icon:hover{
+/*    //background-color:rgba(255,255,255,0.7);
+*/    background-image: url("/Users/knan/Desktop/spec_online/shaft_map/img/check_alt-512.png") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat;
+
+}
+
+.icon.stall {
+width: 71px;
 }
 
 .icon-wrap {
@@ -181,6 +194,11 @@ font-weight: bold;
 .icon-filters {
 text-align: left;
 font-weight: bold;
+}
+
+.outer-icon-wrap {
+margin-left: 6.5%;
+margin-right: 6.5%;
 }
 
 svg:not(:root) {

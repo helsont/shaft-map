@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="216px" height="216px" viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve">
+<g id="XMLID_3_">
+	<g>
+		<path fill="#010101" d="M195.973,208.254h-175c-6.63,0-12-5.37-12-12v-177c0-6.63,5.37-12,12-12h175c6.63,0,12,5.37,12,12v177
+			C207.973,202.884,202.603,208.254,195.973,208.254z"/>
+	</g>
+	<g>
+		<path fill="none" stroke="#030202" d="M207.973,196.254c0,6.63-5.37,12-12,12h-175c-6.63,0-12-5.37-12-12v-177
+			c0-6.63,5.37-12,12-12h175c6.63,0,12,5.37,12,12V196.254z"/>
+	</g>
+</g>
+<ellipse fill="#FFFFFF" cx="143.193" cy="137.999" rx="23.112" ry="15.707"/>
+<polyline fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" points="160.305,138.721 160.305,30 80.121,53 
+	80.121,171.721 "/>
+<line fill="none" stroke="#FFFFFF" stroke-width="14" x1="82.311" y1="82" x2="162.494" y2="59"/>
+<ellipse fill="#FFFFFF" cx="60.094" cy="172.615" rx="25.36" ry="17.234"/>
+</svg>
