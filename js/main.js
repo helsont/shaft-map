@@ -17,7 +17,28 @@ Shaft.DormObject.prototype.toHTML = function () {
 
 }
 
+function appendInfo(dorm) {
+  var dormObj=Shaft.DormObjectMap[dorm];
+  $(".housing-info-body").empty();
+   $(".housing-info-title").empty();
+   $(".housing-info-title").append("Building details");
+ $(".housing-info-body").append("<h2>" + dormObj.name + "</h2>");
+ $(".housing-info-body").append(dormObj.description);
 
+}
+
+function makeClickable(id, dorm) {
+  $("#" + id).on("mouseenter", function (e){
+ $("#" + id).css("fill","yellow");
+  $("#" + id).css("cursor","pointer");
+
+  });
+$("#" + id).on("mouseout", function (e){
+ $("#" + id).css("fill","#007fb2");
+  });
+
+$("#" + id).on("click", function(){ appendInfo(dorm) });
+}
 
 function addFilter(filter){
   Shaft.filterCriteria.push(filter);
@@ -43,41 +64,35 @@ function matchDorm(){
   }
 }
 
-$("#schapiro").on("mouseenter", function (e){
- $("#schapiro").css("fill","yellow");
-  $("#schapiro").css("cursor","pointer");
 
-  });
-$("#schapiro").on("mouseout", function (e){
- $("#schapiro").css("fill","#007fb2");
-  });
 
-$("#schapiro").on("click", function (e){
-	 $(".housing-info-body").empty();
-	 $(".housing-info-title").empty();
-	 $(".housing-info-title").append("Building details");
- $(".housing-info-body").append("<h2>Schapiro</h2>");
- $(".housing-info-body").append("With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising junio With its upcoming renovations from the sixth floor up, Schapiro’s gotten much more popular for rising juniors. Each floor has a roomy kitchen and lounge, while the building as a whole boasts perhaps the most beautiful sky lounge at Columbia. Expect singles to be grabbed by juniors and doubles by sophomores. (singles, doubles)");
-  });
+makeClickable('plimpton', 'plimpton');
+makeClickable('elliot', 'elliot');
+makeClickable('hewitt', 'hewitt');
+//makeClickable('sulz', 'sulz');
+makeClickable('claremont', 'claremont');
+makeClickable('ec', 'ec');
+makeClickable('600w116', 'n600w116');
+makeClickable('616w116', 'n616w116');
+makeClickable('620w116', 'n620w116');
+makeClickable('woodbridge', 'woodbridge');
+makeClickable('wien', 'wien');
+makeClickable('furnald', 'furnald');
+makeClickable('schapiro', 'schapiro');
+makeClickable('river', 'river');
+makeClickable('hogan', 'hogan');
+makeClickable('broadway', 'broadway');
+makeClickable('ruggles', 'ruggles');
+makeClickable('nussbaum', 'nussbaum');
+makeClickable('mcbain', 'mcbain');
+makeClickable('watt', 'watt');
+makeClickable('symposium', 'symposium');
+makeClickable('110', 'n601w110');
+makeClickable('harmony', 'harmony');
+//makeClickable('cathedral', 'cathedral');
 
-$("#woodbridge").on("mouseenter", function (e){
- $("#woodbridge").css("fill","yellow");
- $("#woodbridge").css("cursor","pointer");
 
-  });
-$("#woodbridge").on("mouseout", function (e){
- $("#woodbridge").css("fill","#007fb2");
 
-  });
-
-$("#woodbridge").on("click", function (e){
-	 $(".housing-info-body").empty();
-	 	 $(".housing-info-title").empty();
-	 $(".housing-info-title").append("Building details");
- $(".housing-info-body").append("<h2>Woodbridge</h2>");
- $(".housing-info-body").append("Seniors and juniors will fill up Woodbridge. Every double in Woodbridge features a private kitchen and bathroom as well as a large living room. (2 person)");
-  $().css("display", "none");
-  });
 
 
 /// data stuff
@@ -86,7 +101,7 @@ var schapiro= {
   'name': "Schapiro",
   'description': "After undergoing renovations the past two summers, Schapiro is in tip-top shape to be a hugely popular pick among seniors and juniors (for the singles) and sophomores (for the doubles). Great views, two big lounges, music practice rooms, and workout equipment are just some of the ways Schapiro residents are spoiled. Sophomores looking at Schapiro’s doubles should beware, though, that the walkthrough doubles labeled on floor plans do not have a dividing door, and the setup can be tricky and claustrophobic for some.",
   'amenities': {
-      'kitchen': true
+      'kitchen': true,
       'musicRoom': true,
       'ac': true,
       'computerLab': true,
@@ -276,7 +291,7 @@ var ec = {
     }
 }
 
-var 600w116 = {
+var n600w116 = {
   'name': "600 (W. 116)",
   'description': "Considered the least desirable of the popular 600 block, 600 houses mainly sophomores and juniors in suites ranging from 2-7 people. Arguably the best-located dorm—right above Ollie’s!—600 is made up mostly of doubles. Barnard students share the building with regular residents, which can be fun (cute kids!) or not great (cute kids screaming!). Each suite has a kitchen and bathroom. Not to be overlooked is the dining area in suites with a real dining table—a nice communal space for study groups or dinners.",
   'amenities': {
@@ -300,7 +315,7 @@ var 600w116 = {
     }
 }
 
-var 616w116 = {
+var n616w116 = {
   'name': "616 (W. 116)",
   'description': "Several amenities shared by the entire 600 block—specifically, a piano/TV lounge and a computer lab—are right here in 616. Most rooms face a shaft, but the square footage is generous enough to make up for it. 616 provides the least flexibility in group size among the 600 block suites, with suites only for 4, 5, or 6.",
   'amenities': {
@@ -324,7 +339,7 @@ var 616w116 = {
     }
 }
 
-var 620w116 = {
+var n620w116 = {
   'name': "620 (W. 116)",
   'description': "The top half of 620 is reserved entirely for seniors, with Senior Experience RAs housed here. Rooms are generously sized, and floors 5-10 (seniors only) have only singles. Juniors and lucky sophomores can shoot for the suites on the lower floors. Each suite shares a kitchen and bathroom, and rooms facing 116th Street enjoy the best views.",
   'amenities': {
@@ -424,7 +439,6 @@ var hogan = {
   'name': "Hogan",
   'description': "Hogan is always the first dorm to be completely picked during selection, and there’s no question why. With all singles in its 4- and 5-person suites, Hogan is a popular choice for seniors hoping to live with friends in a social environment but who aren’t so keen on EC. Hogan doesn’t have AC or the same ease in hosting parties, but residents get the benefits of an excellent location and all the facilities in the adjoining Broadway Residence Hall.",
   'amenities': {
-<<<<<<< HEAD
       'kitchen': true,
       'musicRoom': true,
       'ac': false,
@@ -436,7 +450,7 @@ var hogan = {
       'single': false,
       'double': false,
       '3-person': false,
-      '4-person': true
+      '4-person': true,
       '5-person': true,
       '6-person': true,
       '7-person': false,
@@ -589,7 +603,7 @@ var symposium ={
     }
 }
 
-var 601w110 = {
+var n601w110 = {
   'name': "110 (601 W. 110)",
   'description': "This dorm—aptly labeled “College Residence” on its awning—is home to non-affiliates as well as Barnard students—a large number of juniors. Its location is great for Chipotle addicts, but it’s a decently long walk to campus. The trade-off is that 110 residents enjoy beautiful and well-sized studio apartments with their own kitchens or kitchenettes. Groups of anywhere between two and nine can pick into 110, which makes it a great option for odd-sized groups who can’t find a suite in their number.",
   'amenities': {
@@ -669,9 +683,9 @@ Shaft.DormObjectMap['hewitt']= new Shaft.DormObject(hewitt);
 Shaft.DormObjectMap['sulz']= new Shaft.DormObject(sulz);
 Shaft.DormObjectMap['claremont']= new Shaft.DormObject(claremont);
 Shaft.DormObjectMap['ec']= new Shaft.DormObject(ec);
-Shaft.DormObjectMap['600w116']= new Shaft.DormObject(600w116);
-Shaft.DormObjectMap['616w116']= new Shaft.DormObject(616w116);
-Shaft.DormObjectMap['620w116']= new Shaft.DormObject(620w116);
+Shaft.DormObjectMap['n600w116']= new Shaft.DormObject(n600w116);
+Shaft.DormObjectMap['n616w116']= new Shaft.DormObject(n616w116);
+Shaft.DormObjectMap['n620w116']= new Shaft.DormObject(n620w116);
 Shaft.DormObjectMap['wien']= new Shaft.DormObject(wien);
 Shaft.DormObjectMap['furnald']= new Shaft.DormObject(furnald);
 Shaft.DormObjectMap['river']= new Shaft.DormObject(river);
@@ -682,7 +696,7 @@ Shaft.DormObjectMap['nussbaum']= new Shaft.DormObject(nussbaum);
 Shaft.DormObjectMap['mcbain']= new Shaft.DormObject(mcbain);
 Shaft.DormObjectMap['watt']= new Shaft.DormObject(watt);
 Shaft.DormObjectMap['symposium']= new Shaft.DormObject(symposium);
-Shaft.DormObjectMap['601w110']= new Shaft.DormObject(601w110);
+Shaft.DormObjectMap['n601w110']= new Shaft.DormObject(n601w110);
 Shaft.DormObjectMap['harmony']= new Shaft.DormObject(harmony);
 Shaft.DormObjectMap['cathedral']= new Shaft.DormObject(cathedral);
 
