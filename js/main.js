@@ -10,9 +10,6 @@ Shaft.DormObject = function (prop) {
     this.suiteSize = prop.suiteSize;
 }
 
-
-
-
 Shaft.DormObject.prototype.toHTML = function () {
 
 }
@@ -20,24 +17,42 @@ Shaft.DormObject.prototype.toHTML = function () {
 function appendInfo(dorm) {
   var dormObj=Shaft.DormObjectMap[dorm];
   $(".housing-info-body").empty();
-   $(".housing-info-title").empty();
-   $(".housing-info-title").append("Building details");
- $(".housing-info-body").append("<h2>" + dormObj.name + "</h2>");
- $(".housing-info-body").append(dormObj.description);
+  $(".housing-info-title").empty();
+  $(".icon-filters").css("display", "none");
+  $(".housing-info-title").append("Building details");
+  $(".housing-info-body").append("<h2>" + dormObj.name + "</h2>");
+  $(".housing-info-body").append(dormObj.description);
+  $(".housing-info-body").append("<p>");
+  
+  if(dormObj.amenities['kitchen']) {
+    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/double icon-09.png" height="70px" width="69px"> ');
+  }
+  if(dormObj.amenities['musicRoom']) {
+    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/Practice Room Icon-01.png" height="70px" width="69px"> ');
+  }
+  if(dormObj.amenities['ac']) {
+    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/Climate Control Black and White-01.png" height="70px" width="69px"> ');
+  }
+  if(dormObj.amenities['fitness']) {
+    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/Fitness Black and White-01.png" height="70px" width="69px"> ');
+  }
+  if(dormObj.amenities['computerLab']) {
+    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/Computer Black and White-01.png" height="70px" width="69px"> ');
+  }
+
 
 }
 
 function makeClickable(id, dorm) {
   $("#" + id).on("mouseenter", function (e){
- $("#" + id).css("fill","yellow");
-  $("#" + id).css("cursor","pointer");
-
+   $("#" + id).css("fill","yellow");
+   $("#" + id).css("cursor","pointer");
   });
-$("#" + id).on("mouseout", function (e){
- $("#" + id).css("fill","#007fb2");
+  $("#" + id).on("mouseout", function (e){
+   $("#" + id).css("fill","#007fb2");
   });
 
-$("#" + id).on("click", function(){ appendInfo(dorm) });
+  $("#" + id).on("click", function(){ appendInfo(dorm) });
 }
 
 function addFilter(filter){
@@ -90,9 +105,6 @@ makeClickable('symposium', 'symposium');
 makeClickable('110', 'n601w110');
 makeClickable('harmony', 'harmony');
 //makeClickable('cathedral', 'cathedral');
-
-
-
 
 
 /// data stuff
