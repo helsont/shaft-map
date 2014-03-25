@@ -13,31 +13,43 @@ Shaft.DormObject = function (prop) {
 function appendInfo(dorm) {
   var dormObj=Shaft.DormObjectMap[dorm];
   $(".housing-info-body").empty();
-  $(".housing-info-title").empty();
+  $(".instructions").css("display", "none");
+  $(".housing-info-body").css("display","inherit");
   $(".icon-filters").css("display", "none");
-  $(".housing-info-title").append("Building details");
+  $(".building-details").css("display","inherit");
   $(".housing-info-body").append("<h2>" + dormObj.name + "</h2>");
   $(".housing-info-body").append(dormObj.description);
   $(".housing-info-body").append("<p>");
+  $(".filter-results").css("display", "none");
   
   if(dormObj.amenities['kitchen']) {
-    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/double icon-09.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/double icon-09.png" height="70px" width="69px"> ');
   }
   if(dormObj.amenities['musicRoom']) {
-    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/Practice Room Icon-01.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/Practice Room Icon-01.png" height="70px" width="69px"> ');
   }
   if(dormObj.amenities['ac']) {
-    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/Climate Control Black and White-01.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/Climate Control Black and White-01.png" height="70px" width="69px"> ');
   }
   if(dormObj.amenities['fitness']) {
-    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/Fitness Black and White-01.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/Fitness Black and White-01.png" height="70px" width="69px"> ');
   }
   if(dormObj.amenities['computerLab']) {
-    $(".housing-info-body").append(' <img src="/Users/smitapatankar/git/shaft-map/img/Computer Black and White-01.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/Computer Black and White-01.png" height="70px" width="69px"> ');
   }
-
+  $(".housing-info-body").append("<div class='goBack'> Back to menu</div>");
+  $(".goBack").click(function(){
+    $(".housing-info-body").css("display","none");
+    $(".filter-results").css("display", "inherit");
+    $(".icon-filters").css("display", "inherit");
+    $(".building-details").css("display","none");
+    $(".instructions").css("display", "inherit");
+  });
 
 }
+
+
+
 
 function appendFilterResults(){
   console.log("filter");
@@ -56,12 +68,21 @@ function makeClickableResults(dorm){
 }
 
 function makeClickable(id, dorm) {
+  var isBlue=false;
+  if ($("#"+id).prop('style').fill=="#007fb2"){
+    isBlue=true;
+  }
   $("#" + id).on("mouseenter", function (e){
    $("#" + id).css("fill","yellow");
    $("#" + id).css("cursor","pointer");
   });
   $("#" + id).on("mouseout", function (e){
+    if (isBlue){
    $("#" + id).css("fill","#007fb2");
+ }
+ else{
+   $("#" + id).css("fill","#803E98");
+ }
   });
 
   $("#" + id).on("click", function(){ appendInfo(dorm) });

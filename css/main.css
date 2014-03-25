@@ -60,6 +60,24 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.goBack {
+font-size: 1.25rem;
+/* vertical-align: middle; */
+text-align: right;
+/* text-decoration: underline; */
+cursor: pointer;
+color: #025779;
+margin-top: 0.5rem;
+font-weight: normal;
+}
+
+.goBack:hover {
+text-decoration: underline;
+}
+   
+.building-details{
+    display: none;
+}
 .purpleBlock {
 height: 1rem;
 width: 1rem;
@@ -170,7 +188,7 @@ float:left;
 cursor:pointer;
 }
 
-.icon:hover, .icon.active{
+.no-touch.icon:hover, .icon.active{
 /*    //background-color:rgba(255,255,255,0.7);
 */    background-image: url("/Users/knan/Desktop/spec_online/shaft_map/img/check_alt-512.png") !important;
     background-size: contain !important;
