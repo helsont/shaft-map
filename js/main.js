@@ -76,6 +76,7 @@ $("#woodbridge").on("click", function (e){
 	 $(".housing-info-title").append("Building details");
  $(".housing-info-body").append("<h2>Woodbridge</h2>");
  $(".housing-info-body").append("Seniors and juniors will fill up Woodbridge. Every double in Woodbridge features a private kitchen and bathroom as well as a large living room. (2 person)");
+  $().css("display", "none");
   });
 
 
@@ -85,6 +86,7 @@ var schapiro= {
   'name': "Schapiro",
   'description': "Seniors and juniors will fill up Woodbridge. Every double in Woodbridge features a private kitchen and bathroom as well as a large living room. (2 person)",
   'amenities': {
+      'columbia': true,
       'musicRoom': false,
       'ac': true,
       'computerLab': false,
@@ -107,6 +109,7 @@ var woodbridge= {
   'name': "Schapiro",
   'description': "Seniors and juniors will fill up Woodbridge. Every double in Woodbridge features a private kitchen and bathroom as well as a large living room. (2 person)",
   'amenities': {
+      'columbia': true,
       'musicRoom': true,
       'ac': true,
       'computerLab': false,

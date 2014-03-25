@@ -60,6 +60,32 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.purpleBlock {
+height: 1rem;
+width: 1rem;
+background-color: #803e98;
+float: left;
+display: inline-block;
+margin-right: 4px;
+}
+
+.blueBlock {
+display: inline-block;
+height: 1rem;
+width: 1rem;
+background-color: #007fb2;
+float: left;
+margin-right: 4px;
+}
+
+.blueText {
+font-weight: normal;
+}
+
+.purpleText {
+font-weight: normal;
+}
+
 .housing-info {
 padding: 1rem;
 background-color: #b3d4fc;
@@ -134,6 +160,27 @@ width: 56px;
 .icon-filters>img {
 width: 69px;
 margin: 0.5rem;
+}
+
+.icon {
+width: 69px;
+height: 70px;
+background-size: cover;
+float:left;
+}
+
+.icon-wrap {
+width: 69px;
+float: left;
+text-align: center;
+margin: 0.5rem;
+font-size: 0.8rem;
+font-weight: bold;
+}
+
+.icon-filters {
+text-align: left;
+font-weight: bold;
 }
 
 svg:not(:root) {
