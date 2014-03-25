@@ -76,6 +76,7 @@ $("#woodbridge").on("click", function (e){
 	 $(".housing-info-title").append("Building details");
  $(".housing-info-body").append("<h2>Woodbridge</h2>");
  $(".housing-info-body").append("Seniors and juniors will fill up Woodbridge. Every double in Woodbridge features a private kitchen and bathroom as well as a large living room. (2 person)");
+  $().css("display", "none");
   });
 
 
@@ -85,6 +86,7 @@ var schapiro= {
   'name': "Schapiro",
   'description': "After undergoing renovations the past two summers, Schapiro is in tip-top shape to be a hugely popular pick among seniors and juniors (for the singles) and sophomores (for the doubles). Great views, two big lounges, music practice rooms, and workout equipment are just some of the ways Schapiro residents are spoiled. Sophomores looking at Schapiro’s doubles should beware, though, that the walkthrough doubles labeled on floor plans do not have a dividing door, and the setup can be tricky and claustrophobic for some.",
   'amenities': {
+<<<<<<< HEAD
       'kitchen': true
       'musicRoom': true,
       'ac': true,
@@ -134,6 +136,9 @@ var plimpton = {
   'description': "If you’re OK with a longer walk, Plimpton has some of the best amenities in Barnard housing. Each suite now has four singles and a small corner double with a shared bathroom and kitchen. If two people are willing to take the small double, juniors should feel confident picking into Plimpton.",
   'amenities': {
       'kitchen': true,
+=======
+      'columbia': true,
+>>>>>>> 261082f8bd9fcdfcdff8ca5a9b47e60bf83ef172
       'musicRoom': false,
       'ac': true,
       'computerLab': true,
@@ -423,6 +428,7 @@ var hogan = {
   'name': "Hogan",
   'description': "Hogan is always the first dorm to be completely picked during selection, and there’s no question why. With all singles in its 4- and 5-person suites, Hogan is a popular choice for seniors hoping to live with friends in a social environment but who aren’t so keen on EC. Hogan doesn’t have AC or the same ease in hosting parties, but residents get the benefits of an excellent location and all the facilities in the adjoining Broadway Residence Hall.",
   'amenities': {
+<<<<<<< HEAD
       'kitchen': true,
       'musicRoom': true,
       'ac': false,
