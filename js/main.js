@@ -29,6 +29,11 @@ function appendInfo(dorm) {
   $(".building-details").css("display","inherit");
   $(".housing-info-body").append("<h2>" + dormObj.name + "</h2>");
   $(".housing-info-body").append(dormObj.description);
+  $(".housing-info-body").append(
+
+
+
+    )
   $(".housing-info-body").append("<p>");
   $(".filter-results").css("display", "none");
   
