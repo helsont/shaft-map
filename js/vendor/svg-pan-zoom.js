@@ -2,7 +2,8 @@ window.svgPanZoom = (function(document) {
 
   'use strict';
 
-  var state = 'none', viewportCTM, stateTarget, stateOrigin, stateTf;
+  var state = 'none', viewportCTM, stateTarget, stateOrigin, stateTf, hasEnteredYet, theSvg;
+  hasEnteredYet = false;
 
   /// CONFIGURATION
   /// ====>
@@ -11,8 +12,8 @@ window.svgPanZoom = (function(document) {
   var zoomEnabled = true; // true or false: enable or disable zooming (default enabled)
   var dragEnabled = false; // true or false: enable or disable dragging (default disabled)
   var zoomScaleSensitivity = 0.2; // Zoom sensitivity
-  var minZoom = 0.5; // Minimum Zoom
-  var maxZoom = 10; // Maximum Zoom
+  var minZoom = 1; // Minimum Zoom
+  var maxZoom = 20; // Maximum Zoom
   var onZoom = null; // Zoom callback
 
   /// <====
@@ -46,6 +47,8 @@ window.svgPanZoom = (function(document) {
         maxZoom = args.maxZoom;
       }
       setupHandlers(svg);
+      theSvg = svg; //save this for later, please.
+
       if (!!svg.ownerDocument.documentElement.tagName.toLowerCase() !== 'svg') {
         svg.ownerDocument.defaultView.svgPanZoom = svgPanZoom;
       }
@@ -492,6 +495,26 @@ window.svgPanZoom = (function(document) {
 
       stateOrigin = p;
     }
+
+    //handle first enter last.
+    if(!hasEnteredYet) {
+      hasEnteredYet = true;
+      recenterMap();
+    }
+  }
+
+  /*
+   * Recenter's the map after initial mouseenter
+   */
+  function recenterMap() {
+    resetZoom();
+    var offsetDistance = $(theSvg).width()/100;
+    var count = Math.ceil((offsetDistance * offsetDistance)/10);
+    for(var i=0; i< count; i++) {
+      pan('svg','right');
+      console.log(i); //for diagnostic, take out later
+    }
+    enableZoom(); //we turned it off when we resetZoom(), I think.
   }
 
   /**

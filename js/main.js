@@ -5,12 +5,10 @@ Shaft.MatchedDorms=[];
 Shaft.DormObjectMap = {};
 
 window.onload = function() {
-  console.log($("#map"));
-  console.log("anything??");
   svgPanZoom.init({
     'zoomEnabled': true,
-    'minZoom': 0.25,
-    'maxZoom': 10
+    'minZoom': 0.20,
+    'maxZoom': 5
   });
 };
 Shaft.DormObject = function (prop) {
