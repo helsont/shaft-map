@@ -23,20 +23,25 @@ function appendInfo(dorm) {
   $(".filter-results").css("display", "none");
   
   if(dormObj.amenities['kitchen']) {
-    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/double icon-09.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/double icon-09.png" height="70px" width="69px"> ');
   }
   if(dormObj.amenities['musicRoom']) {
-    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/Practice Room Icon-01.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/Practice Room Icon-01.png" height="70px" width="69px"> ');
   }
   if(dormObj.amenities['ac']) {
-    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/Climate Control Black and White-01.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/Climate Control Black and White-01.png" height="70px" width="69px"> ');
   }
   if(dormObj.amenities['fitness']) {
-    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/Fitness Black and White-01.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/Fitness Black and White-01.png" height="70px" width="69px"> ');
   }
   if(dormObj.amenities['computerLab']) {
-    $(".housing-info-body").append(' <img src="http://www.columbia.edu/~kkn2109/shaft_map/img/Computer Black and White-01.png" height="70px" width="69px"> ');
+    $(".housing-info-body").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/Computer Black and White-01.png" height="70px" width="69px"> ');
   }
+  if(dormObj.amenities['stallBR']) {
+    $(".housing-info-body").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/bathroom stall icon copy.png" height="70px" width="69px"> ');
+  }
+
+
   $(".housing-info-body").append("<div class='goBack'> Back to menu</div>");
   $(".goBack").click(function(){
     $(".housing-info-body").css("display","none");
@@ -92,11 +97,9 @@ function makeClickableFilter(id, filter) {
   $("."+id).click( function(){ 
     if ($("."+id).hasClass("active")){
       matchDorm(filter, false);
-      console.log("false");
     }
     else{
     matchDorm(filter, true);
-    console.log("true");
     }
     $("."+id).toggleClass("active");
   });
@@ -172,7 +175,7 @@ makeClickableFilter('stall', 'stallBR');
 makeClickable('plimpton', 'plimpton');
 makeClickable('elliot', 'elliot');
 makeClickable('hewitt', 'hewitt');
-//makeClickable('sulz', 'sulz');
+makeClickable('sulz', 'sulz');
 makeClickable('claremont', 'claremont');
 makeClickable('ec', 'ec');
 makeClickable('600w116', 'n600w116');
@@ -192,7 +195,7 @@ makeClickable('watt', 'watt');
 makeClickable('symposium', 'symposium');
 makeClickable('110', 'n601w110');
 makeClickable('harmony', 'harmony');
-//makeClickable('cathedral', 'cathedral');
+makeClickable('cathedral', 'cathedral');
 
 
 /// data stuff
@@ -225,7 +228,7 @@ var schapiro= {
 
 var woodbridge= {
   'name': "Woodbridge",
-  'description': "The only Columbia dorm on Riverside Drive, Woodbridge provides some of the best apartment housing available to students. The two-person apartments can be turned into a kind of walkthrough double with one person in the bedroom and another in the living area. The windy walk down 115th might deter some, but for those who can make the trek, Woodbridge offers that off-campus feel many are looking for with junior and senior housing.",
+  'description': "The only Columbia dorm on Riverside Drive, Woodbridge provides some of the best apartment housing available to students. The two-person apartments can be turned into a kind of walkthrough double with one person in the bedroom and another in the living area. The windy walk down 115th might deter some, but for those who can make the trek, Woodbridge offers that “off-campus” feel many are looking for with junior and senior housing.",
   'amenities': {
       'kitchen': true,
       'musicRoom': false,
@@ -251,7 +254,7 @@ var woodbridge= {
 
 var plimpton = {
   'name': "Plimpton",
-  'description': "If you’re OK with a longer walk, Plimpton has some of the best amenities in Barnard housing. Each suite now has four singles and a small corner double with a shared bathroom and kitchen. If two people are willing to take the small double, juniors should feel confident picking into Plimpton.",
+  'description': "If you’re OK with a longer walk, Plimpton has some good amenities. Each suite now has four singles and a small corner double with a shared bathroom and a small kitchen. If two people are willing to take the small double, juniors should feel confident picking into Plimpton.",  
   'amenities': {
       'kitchen': true,
       'musicRoom': false,
@@ -278,7 +281,7 @@ var plimpton = {
 
 var elliot = {
   'name': "Elliot",
-  'description': "Housing many transfers, Elliott is sometimes seen as a lesser dorm for sophomores and juniors, but students who live there speak highly of the communities that form among floors. Beware of some pretty tiny rooms—especially doubles—but there are also nice views of Claremont Avenue and the beautiful luxury that is air conditioning.",
+  'description': "Housing many transfers, Elliott is sometimes seen as a lesser dorm for sophomores and juniors, but students who live there speak highly of the atmosphere. Beware of some pretty tiny rooms—especially doubles—but there are also nice views of Claremont Avenue and the beautiful luxury that is air conditioning. Certain Elliott lounges offer DVD players, in addition to the standard television set; plus, you can find a kitchen on each floor.",
   'amenities': {
       'kitchen': true,
       'musicRoom': false,
@@ -308,7 +311,7 @@ var hewitt = {
   'description': "Location can be a blessing and a curse: Hewitt residents are on the Quad, so they get easy access to class buildings, Hewitt Dining Hall, and the Diana. On the other hand, Hewitt residents are required—as all Quad residents are—to be on a meal plan. Not having a kitchen makes having Hewitt (the dining hall) close by and available more appealing, but some might prefer cooking or buying food off-campus.",
   'amenities': {
       'kitchen': false,
-      'musicRoom': false,
+      'musicRoom': true,
       'ac': false,
       'computerLab': true,
       'fitness': false,
@@ -330,7 +333,7 @@ var hewitt = {
 }
 
 var sulz = {
-  'name': "Sulz Tower",
+  'name': "Sulzberger Tower",
   'description': "Some of the most coveted housing at Barnard is the roomy, air-conditioned singles and doubles in Sulz Tower. These rooms boast great views and are a popular choice for seniors who want to live on the Quad. Each floor has two lounges with kitchenettes, and the basement has a computer lab and music practice rooms.",
   'amenities': {
       'kitchen': true,
@@ -384,7 +387,45 @@ var claremont = {
 
 var ec = {
   'name': "East Campus",
-  'description': "Ah, the kingpin of Columbia housing and dorm social life. EC has a few doubles on the sixth floor which get taken by late juniors and early sophomores. Other than these, EC is comprised of 2-person flats, 4-person townhouses, 5-person suites, 6-person townhouses, and 6-person suites. The high rise suites—most of them housing five people in three singles and a double—have amazing views of Morningside Park, and the townhouses have a great setup for throwing parties.",
+  'description': "Ah, the kingpin of Columbia housing and dorm social life. EC has a few doubles on the sixth floor, which get taken by juniors with bad numbers and sophomores with good numbers. Other than these, EC is comprised of 2-person flats, 4-person townhouses, 5-person suites, 6-person townhouses, and 6-person suites. The high rise suites—most of them housing five people in three singles and a double—have amazing views of Morningside Park, and the townhouses have a great setup for throwing parties.",
+  'cutoffs':{
+    {
+      'type': "2-person flat", 
+      'cutoff':'30/1477'
+    },
+    {
+      'type': "4-person townhouse", 
+      'cutoff':"30/1309"
+    },
+    {
+      'type': "5-person all-singles", 
+      'cutoff':"30/709"
+    },
+   {
+      'type': "5-person with double", 
+      'cutoff':"24/814"
+    },
+    {
+      'type': "6-person highrise", 
+      'cutoff':"30/668"
+    },
+
+   {
+      'type': "6-person townhouse all-singles", 
+      'cutoff':"30/1309"
+    },
+    {
+      'type': "6-person townhouse with double", 
+      'cutoff':"30/2752"
+    },
+
+    {
+      'type': "6th floor double", 
+      'cutoff':"30/1309"
+    }
+
+
+   },
   'amenities': {
       'kitchen': true,
       'musicRoom': true,
@@ -409,7 +450,7 @@ var ec = {
 }
 
 var n600w116 = {
-  'name': "600 (W. 116)",
+  'name': "600 W. 116",
   'description': "Considered the least desirable of the popular 600 block, 600 houses mainly sophomores and juniors in suites ranging from 2-7 people. Arguably the best-located dorm—right above Ollie’s!—600 is made up mostly of doubles. Barnard students share the building with regular residents, which can be fun (cute kids!) or not great (cute kids screaming!). Each suite has a kitchen and bathroom. Not to be overlooked is the dining area in suites with a real dining table—a nice communal space for study groups or dinners.",
   'amenities': {
       'kitchen': true,
@@ -435,7 +476,7 @@ var n600w116 = {
 }
 
 var n616w116 = {
-  'name': "616 (W. 116)",
+  'name': "616 W. 116",
   'description': "Several amenities shared by the entire 600 block—specifically, a piano/TV lounge and a computer lab—are right here in 616. Most rooms face a shaft, but the square footage is generous enough to make up for it. 616 provides the least flexibility in group size among the 600 block suites, with suites only for 4, 5, or 6.",
   'amenities': {
       'kitchen': true,
@@ -461,12 +502,12 @@ var n616w116 = {
 }
 
 var n620w116 = {
-  'name': "620 (W. 116)",
-  'description': "The top half of 620 is reserved entirely for seniors, with Senior Experience RAs housed here. Rooms are generously sized, and floors 5-10 (seniors only) have only singles. Juniors and lucky sophomores can shoot for the suites on the lower floors. Each suite shares a kitchen and bathroom, and rooms facing 116th Street enjoy the best views.",
+  'name': "620 W. 116",
+  'description': "The top half of 620 always go to seniors, with Senior Experience RAs housed here. Rooms are generously sized, and floors 5-10 (seniors only) have only singles. Juniors and lucky sophomores can shoot for the suites on the lower floors. Each suite shares a kitchen and bathroom, and rooms facing 116th Street enjoy the best views.",
   'amenities': {
       'kitchen': true,
       'musicRoom': false,
-      'ac': true,
+      'ac': false,
       'computerLab': true,
       'fitness': false,
       'stallBR': true,
@@ -592,7 +633,7 @@ var hogan = {
 
 var broadway = {
   'name': "Broadway",
-  'description': "One of Columbia’s newest-constructed dorms, Broadway is praised for its cleanliness, excellent facilities (with AC!), and beautiful views in all directions. Speedy elevators take junior and senior residents to their singles—some large, some not so large—and a few sophomores to their tiny doubles. Broadway also has the perfect location between academic life (close to Hamilton) and social life (bars and restaurants within just a few blocks).",
+  'description': "One of Columbia’s newest-constructed dorms, Broadway is praised for its cleanliness, excellent facilities (with AC!), and beautiful views in all directions. Speedy elevators take junior and senior residents to their singles—some large, some not so large—and a few sophomores to their doubles, some of which are fairly big. Broadway also has the perfect location between academic life (close to Hamilton) and social life (bars and restaurants within just a few blocks).",
   'amenities': {
       'kitchen': true,
       'musicRoom': true,
@@ -748,7 +789,7 @@ var symposium ={
 
 var n601w110 = {
   'name': "110 (601 W. 110)",
-  'description': "This dorm—aptly labeled “College Residence” on its awning—is home to non-affiliates as well as Barnard students—a large number of juniors. Its location is great for Chipotle addicts, but it’s a decently long walk to campus. The trade-off is that 110 residents enjoy beautiful and well-sized studio apartments with their own kitchens or kitchenettes. Groups of anywhere between two and nine can pick into 110, which makes it a great option for odd-sized groups who can’t find a suite in their number.",
+  'description': "This dorm—aptly labeled “College Residence” on its awning—is home to non-affiliates as well as Barnard students—a mix of sophomores and juniors. Its location is great for Chipotle addicts, but it’s a decently long walk to campus. The trade-off is that 110 residents enjoy beautiful and well-sized studio apartments with their own kitchens or kitchenettes. Groups of anywhere between two and nine can pick into 110, which makes it a great option for odd-sized groups who can’t find a suite in their number.",
   'amenities': {
       'kitchen': true,
       'musicRoom': false,
@@ -800,7 +841,7 @@ var harmony = {
 
 var cathedral = {
   'name': "Cathedral Gardens",
-  'description': "CG is the absolute farthest dorm from campus. In return for their commute (15 minutes, but public safety vans can take you), residents get fantastic rooms—mostly singles—in a real apartment building with great facilities and air conditioning. If you’re willing to give up close proximity to campus, CG is a great choice for Barnardians looking for a taste of lux apartment NYC living.",
+  'description': "CG is the absolute farthest dorm from campus. In return for their commute (15 minutes, but public safety vans can take you), residents get fantastic rooms—mostly singles—in a real apartment building with dishwashers, great facilities, and air conditioning. If you’re willing to give up close proximity to campus, CG is a great choice for Barnardians looking for a taste of lux apartment NYC living.",
   'amenities': {
       'kitchen': true,
       'musicRoom': false,
@@ -823,30 +864,32 @@ var cathedral = {
 
     }
 }
-
-Shaft.DormObjectMap['schapiro']= new Shaft.DormObject(schapiro);
-Shaft.DormObjectMap['woodbridge']= new Shaft.DormObject(woodbridge);
-Shaft.DormObjectMap['plimpton']= new Shaft.DormObject(plimpton);
-Shaft.DormObjectMap['elliot']= new Shaft.DormObject(elliot);
-Shaft.DormObjectMap['hewitt']= new Shaft.DormObject(hewitt);
-Shaft.DormObjectMap['sulz']= new Shaft.DormObject(sulz);
+Shaft.DormObjectMap['broadway']= new Shaft.DormObject(broadway);
 Shaft.DormObjectMap['claremont']= new Shaft.DormObject(claremont);
+Shaft.DormObjectMap['furnald']= new Shaft.DormObject(furnald);
 Shaft.DormObjectMap['ec']= new Shaft.DormObject(ec);
+Shaft.DormObjectMap['harmony']= new Shaft.DormObject(harmony);
+Shaft.DormObjectMap['hogan']= new Shaft.DormObject(hogan);
+Shaft.DormObjectMap['mcbain']= new Shaft.DormObject(mcbain);
+Shaft.DormObjectMap['nussbaum']= new Shaft.DormObject(nussbaum);
+Shaft.DormObjectMap['river']= new Shaft.DormObject(river);
+Shaft.DormObjectMap['ruggles']= new Shaft.DormObject(ruggles);
+Shaft.DormObjectMap['schapiro']= new Shaft.DormObject(schapiro);
+Shaft.DormObjectMap['symposium']= new Shaft.DormObject(symposium);
+Shaft.DormObjectMap['watt']= new Shaft.DormObject(watt);
+Shaft.DormObjectMap['wien']= new Shaft.DormObject(wien);
+
+Shaft.DormObjectMap['woodbridge']= new Shaft.DormObject(woodbridge);
+Shaft.DormObjectMap['n601w110']= new Shaft.DormObject(n601w110);
 Shaft.DormObjectMap['n600w116']= new Shaft.DormObject(n600w116);
 Shaft.DormObjectMap['n616w116']= new Shaft.DormObject(n616w116);
 Shaft.DormObjectMap['n620w116']= new Shaft.DormObject(n620w116);
-Shaft.DormObjectMap['wien']= new Shaft.DormObject(wien);
-Shaft.DormObjectMap['furnald']= new Shaft.DormObject(furnald);
-Shaft.DormObjectMap['river']= new Shaft.DormObject(river);
-Shaft.DormObjectMap['hogan']= new Shaft.DormObject(hogan);
-Shaft.DormObjectMap['broadway']= new Shaft.DormObject(broadway);
-Shaft.DormObjectMap['ruggles']= new Shaft.DormObject(ruggles);
-Shaft.DormObjectMap['nussbaum']= new Shaft.DormObject(nussbaum);
-Shaft.DormObjectMap['mcbain']= new Shaft.DormObject(mcbain);
-Shaft.DormObjectMap['watt']= new Shaft.DormObject(watt);
-Shaft.DormObjectMap['symposium']= new Shaft.DormObject(symposium);
-Shaft.DormObjectMap['n601w110']= new Shaft.DormObject(n601w110);
-Shaft.DormObjectMap['harmony']= new Shaft.DormObject(harmony);
 Shaft.DormObjectMap['cathedral']= new Shaft.DormObject(cathedral);
+Shaft.DormObjectMap['elliot']= new Shaft.DormObject(elliot);
+Shaft.DormObjectMap['hewitt']= new Shaft.DormObject(hewitt);
+Shaft.DormObjectMap['plimpton']= new Shaft.DormObject(plimpton);
+Shaft.DormObjectMap['sulz']= new Shaft.DormObject(sulz);
+
+matchDorm("",false);
 
 
