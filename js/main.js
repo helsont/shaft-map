@@ -19,6 +19,11 @@ function appendInfo(dorm) {
   $(".building-details").css("display","inherit");
   $(".housing-info-body").append("<h2>" + dormObj.name + "</h2>");
   $(".housing-info-body").append(dormObj.description);
+  $(".housing-info-body").append(
+
+
+
+    )
   $(".housing-info-body").append("<p>");
   $(".filter-results").css("display", "none");
   
@@ -388,7 +393,7 @@ var claremont = {
 var ec = {
   'name': "East Campus",
   'description': "Ah, the kingpin of Columbia housing and dorm social life. EC has a few doubles on the sixth floor, which get taken by juniors with bad numbers and sophomores with good numbers. Other than these, EC is comprised of 2-person flats, 4-person townhouses, 5-person suites, 6-person townhouses, and 6-person suites. The high rise suites—most of them housing five people in three singles and a double—have amazing views of Morningside Park, and the townhouses have a great setup for throwing parties.",
-  'cutoffs':{
+  'cutoffs':[
     {
       'type': "2-person flat", 
       'cutoff':'30/1477'
@@ -425,7 +430,7 @@ var ec = {
     }
 
 
-   },
+   ],
   'amenities': {
       'kitchen': true,
       'musicRoom': true,
