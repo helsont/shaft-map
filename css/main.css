@@ -59,15 +59,73 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body > div.housing-title > a {
+color: rgb(20, 20, 20);
+text-decoration: none;
+}
+body > div.housing-title > a:hover {
+color: gray;
+text-decoration: none;
+}
+   #box-ad {
+margin-top: 2rem;
+/* border: 1px solid gray; */
+float: left;
+margin-right: 1rem;
+}
+
+#box-ad-2 > a > img {
+margin-top: 2rem;
+}
+
+.cutoff-title {
+font-weight: 700;
+margin-top: 1rem;
+}
+
+.cutoff-row {
+width: 100%;
+font-size: 0.9rem;
+font-weight: 600;
+}
+.cutoff-type {
+width: 58%;
+float: left;
+}
+.cutoff-cutoff {
+width: 40%;
+float: left;
+}
+
+.icon-result-wrapper>img {
+margin-top: 0.25rem;
+}
+
+.icon-result-wrapper {
+display: block;
+clear: left;
+padding-top: 0.5rem;
+}
+
+.housing-info-body>img {
+margin-bottom: 0.25rem;
+}
 
 #credit {
 position: absolute;
 right: 0;
-margin-right: 2.75rem;
+margin-right: 4%;
 font-size: .7rem;
 text-transform: uppercase;
 color: #808080;
+width: 53%;
+text-align: right;
 }
+
+.filter-results {
+clear: both;
+}
+
 .goBack {
 font-size: 1.25rem;
 /* vertical-align: middle; */
@@ -108,14 +166,19 @@ font-weight: normal;
 text-align:left;
 margin-top: 0.5rem;
 }
-
+#box-ad-id {
+margin-bottom: 1rem;
+}
 #map-inset {
 position: absolute;
-top: 31.1rem;
-right: -.15rem;
+top: 39rem;
+right: 0;
 margin: 3rem;
+margin-right: 6%;
 width: 15.1%;
-height: 15.7%;
+max-width: 10rem;
+max-height: 6rem;
+background-color: white;
 border: 1px solid black;
 }
 
@@ -131,20 +194,57 @@ background-color: #b3d4fc;
 margin: 1rem;
 width: 31%;
 text-align: center;
+min-height: 52rem;
 float:left;
+font-family: 'Whitney SSm A', 'Whitney SSm B';
+font-weight: 700;
+font-style: normal
+}
+
+.building-details {
+text-transform: uppercase;
+color: rgb(78, 77, 77);
+font-weight: 600;
 }
 
 .top-nav {
-width: 100%;
-height: 3rem;
+padding: 0.5rem;
 top: 0;
 background-color: rgb(255, 200, 98);
 }
 
+body > div.top-nav > div > a > img {
+width: 100%;
+height: auto;
+}
+
+.ad {
+float:left;
+max-width: 65%;
+}
+
+body > div.top-nav.clearfix > img {
+width: 25%;
+float: left;
+height: auto;
+margin-right:7%;
+}
+
 body > div.title-description > h3 {
-font-size: 1.4em;
+font-size: 1.25em;
 margin-bottom: 0;
 margin-right: 0em;
+font-family: 'Whitney SSm A', 'Whitney SSm B';
+font-weight: 700;
+font-style: normal;
+}
+
+
+
+.title-description>p{
+    font-family: 'Whitney SSm A', 'Whitney SSm B';
+font-weight: 500;
+font-style: normal;
 }
 
 .title-description {
@@ -154,16 +254,17 @@ top: 0;
 text-align: right;
 width: 26rem;
 margin-right: 3.5%;
-margin-top: 3.25rem;
+margin-top: 6.75rem;
 font-size: .9rem;
 }
 
 .housing-title {
-font-family: helvetica neue;
 font-size: 5rem;
-font-weight: 800;
 text-align: left;
 padding-left: 1rem;
+font-family: 'Whitney SSm A', 'Whitney SSm B';
+font-weight: 800;
+text-transform: uppercase;
 }
 
 .housing-info-title {
@@ -183,27 +284,31 @@ text-align: right;
 
 .housing-info-body {
 text-align: left;
+font-weight: 500;
+line-height: 1.5;
+
+}
+.housing-info-body>h2{
+    text-transform:uppercase;
 }
 
 #shaft_map {
-height: 30em;
+height: 36em;
 width: 60%;
 float: left;
 border: 1px solid black;
 margin-top: 1rem;
 }
-.spec-logo{
-position: absolute;
-height: 2rem;
-width: 14rem;
-margin-left:1rem;
+.spec-logo {
+float: left;
+height: auto;
+width: 25%;
+margin-left: 1rem;
 margin-top: 0.5rem;
 left: 0;
-background-size: contain;
-background-image: url("/Users/knan/Desktop/spec_online/shaft_map/img/whitemasthead.png");
 z-index: 32;
-background-repeat: no-repeat;
-}
+margin-right: 7%;
+=}
 
 .icon-filters>img {
 width: 56px;
@@ -222,16 +327,13 @@ float:left;
 cursor:pointer;
 }
 
-.no-touch.icon:hover, .icon.active{
+
+.no-touch .icon:hover, .icon.active{
 /*    //background-color:rgba(255,255,255,0.7);
-*/    background-image: url("/Users/knan/Desktop/spec_online/shaft_map/img/check_alt-512.png") !important;
+*/    background-image: url("http://spectrum.columbiaspectator.com/shaft_map/img/check_alt-512.png") !important;
     background-size: contain !important;
     background-repeat: no-repeat;
 
-}
-
-.icon.stall {
-width: 71px;
 }
 
 .icon-wrap {
@@ -253,11 +355,12 @@ font-weight: bold;
 }
 
 .outer-icon-wrap {
-margin-left: 6.5%;
-margin-right: 6.5%;
+text-align: center;
+padding: 0.5rem;
+/* margin: auto; */
+/* margin-right: 1rem; */
 width: 100%;
 }
-
 .result {
 width: 47%;
 float: left;
@@ -267,8 +370,18 @@ cursor: pointer;
 background-color: rgb(218, 218, 218);
 color: black;
 padding: 1px;
-border-radius: 10px;
+border-radius: 4px;
+font-weight: 600;
 }
+
+.icon.stall{
+    width: 71px;
+}
+
+.no-touch .result:hover{
+    background-color:rgb(255, 214, 139);
+}
+
 .full-version {
     display:none;
 }
@@ -282,7 +395,14 @@ svg:not(:root) {
    Media Queries
    ========================================================================== */
 
-@media all and (max-width: 42em) {
+@media all and (max-width: 47em) {
+    
+.housing-info{
+    min-height: 18rem !important;
+}
+    body > div.housing-title > a {
+color: white;
+}
 .full-version {
  display:inherit;
 font-size: .7rem;
@@ -294,19 +414,39 @@ padding-top: 0.25rem;
 padding-bottom: 0.25rem;
 }
 
+.outer-icon-wrap {
+width: 95%;
+}
+
+
 .title-description {
     display:none;
 }
 
  #shaft_map {
-display:none !important;
-}
+display:inherit !important;
+width:100% !important;
+height:auto;
+border:none;
+border-top:1px solid gray;
+background-color:rgb(218, 218, 218);
+margin-top:0;
 
+}
+#credit{
+    display:none;
+}
+#map{
+    display:none !important;
+}
+#map-inset{
+    display:none !important;
+}
 .instructions{
     display:none !important;
 }
 .housing-title {
-font-size: 3rem;
+font-size: 3rem !important;
 text-align: left;
 background-color: black;
 color: white;
@@ -339,10 +479,106 @@ border-radius:0;
 margin:0;
 }
 
+body > div.top-nav.clearfix > img {
+/* text-align: center; */
+width: 75%;
+float: left;
+margin-left: 12.25%;
+height: auto;
+/* margin-right: 8%; */
+}
+
+    body > div.top-nav > div > a > img {
+        width: 100%;
+        height: auto;
+        margin-left:0;
+}
+
+
+.ad {
+float: left;
+max-width: 100% !important;
+}
+.top-nav {
+width: auto;
+text-align:center;
+}
+
+.spec-logo {
+text-align: center;
+margin: auto;
+height: auto;
+width: 59%;
+margin-left: 21%;
+margin-bottom: 0.5rem;
+}
+}
+
+@media all and (max-width: 63em) {
+
+    #box-ad-2 > a > img {
+margin-top: 1rem;
+}
+
+    #box-ad {
+        margin-right:0;
+float:none;
+}
+#box-ad-id {
+text-align: center;
+}
+    #map-inset{
+        top: 38rem !important;
+    }
+
+    .housing-title {
+        font-size:4rem;
+    }
+
+    .title-description{
+        font-size: 0.7rem;
+        width: 19rem;
+        margin-top: 5rem;
+    }
+.title-description p{
+    margin-top:0.5rem;
+}
+.icon-wrap {
+width: 59px;
+}
+.icon {
+width: 59px;
+height: 70px;
+background-size: contain;
+float: left;
+cursor: pointer;
+background-repeat: no-repeat;
+}
+.icon.stall{
+    width:61px;
+}
+.outer-icon-wrap{
+    margin-left:0;
+    margin-right:0;
+}
+#shaft_map{
+    width: 59%;
+}
+.housing-info-body {
+    font-size:0.8rem;
+}
+
+    }
 @media print,
        (-o-min-device-pixel-ratio: 5/4),
        (-webkit-min-device-pixel-ratio: 1.25),
        (min-resolution: 120dpi) {
+
+}
+
+
+@media all and (max-width:800px){
+
 
 }
 
@@ -407,6 +643,9 @@ margin:0;
 .clearfix {
     *zoom: 1;
 }
+
+
+
 
 /* ==========================================================================
    Print styles
