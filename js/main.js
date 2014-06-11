@@ -102,22 +102,22 @@ function makeClickableResults(dorm){
 }
 
 function makeClickable(id, dorm) {
-  var isBlue=false;
+ /* var isBlue=false;
   if ($("#"+id).prop('style').fill=="#007fb2"){
     isBlue=true;
-  }
+  }*/
   $("#" + id).on("mouseenter", function (e){
-   $("#" + id).css("fill","yellow");
+  // $("#" + id).css("fill","yellow");
    $("#" + id).css("cursor","pointer");
   });
-  $("#" + id).on("mouseout", function (e){
-    if (isBlue){
+ /* $("#" + id).on("mouseout", function (e){
+    if ($("#"+id).prop('style').fill=="#007fb2"){
    $("#" + id).css("fill","#007fb2");
  }
  else{
    $("#" + id).css("fill","#803E98");
  }
-  });
+  });*/
 
   $("#" + id).on("click", function(){ appendInfo(dorm) });
 }
