@@ -508,8 +508,8 @@ window.svgPanZoom = (function(document) {
    */
   function recenterMap() {
     resetZoom();
-    var offsetDistance = $(theSvg).width()/100;
-    var count = Math.ceil((offsetDistance * offsetDistance)/10);
+    var offsetDistance = $(theSvg).width()/60;
+    var count = Math.ceil((offsetDistance * offsetDistance)/75);
     for(var i=0; i< count; i++) {
       pan('svg','right');
       console.log(i); //for diagnostic, take out later
