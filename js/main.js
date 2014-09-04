@@ -1,26 +1,33 @@
+/***********************************************************************
+Feature detection for mobile touch
+************************************************************************/
+function is_touch_device() {
+  return 'ontouchstart' in window // works on most browsers 
+      || 'onmsgesturechange' in window; // works on ie10
+}
 
+/***********************************************************************
+Map loading logic
+************************************************************************/
+//Give a default zoom for the map on load
+window.onload = function() {
+  if (!is_touch_device()){
+    svgPanZoom.init({
+      'zoomEnabled': true,
+      'minZoom': 0.20,
+      'maxZoom': 5
+    });
+  }
+};
+
+/***********************************************************************
+Initialize objects, hashmaps
+************************************************************************/
 Shaft={};
 Shaft.filterCriteria=[];
 Shaft.MatchedDorms=[];
 Shaft.DormObjectMap = {};
 Shaft.activeLocation = null;
-
-//Feature detection
-function is_touch_device() {
-  return 'ontouchstart' in window // works on most browsers 
-      || 'onmsgesturechange' in window; // works on ie10
-};
-
-//Give a default zoom for the map on load
-window.onload = function() {
-if (!is_touch_device()){
-  svgPanZoom.init({
-    'zoomEnabled': true,
-    'minZoom': 0.20,
-    'maxZoom': 5
-  });
-}
-};
 
 //Object for storing information about each dorm/building
 Shaft.DormObject = function (prop) {
@@ -30,9 +37,11 @@ Shaft.DormObject = function (prop) {
     this.amenities = prop.amenities;
     this.suiteSize = prop.suiteSize;
     this.cutoffs = prop.cutoffs;
-}
+};
 
-//function that writes information to side pane based on dorm selected
+/***********************************************************************
+Writes information to left side pane based on dorm selected
+************************************************************************/
 function appendInfo(dorm) {
   var dormObj=Shaft.DormObjectMap[dorm];
   $(".housing-info-body").empty();
@@ -56,29 +65,29 @@ function appendInfo(dorm) {
   $(".housing-info-body").append("<div class='icon-result-wrapper'>");
   $(".filter-results").css("display", "none");
   
-  if(dormObj.amenities['kitchen']) {
+  if(dormObj.amenities.kitchen) {
     $(".icon-result-wrapper").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/double icon-09.png" height="70px" width="69px"> ');
   }
-  if(dormObj.amenities['musicRoom']) {
+  if(dormObj.amenities.musicRoom) {
     $(".icon-result-wrapper").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/Practice Room Icon-01.png" height="70px" width="69px"> ');
   }
-  if(dormObj.amenities['ac']) {
+  if(dormObj.amenities.ac) {
     $(".icon-result-wrapper").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/Climate Control Black and White-01.png" height="70px" width="69px"> ');
   }
-  if(dormObj.amenities['fitness']) {
+  if(dormObj.amenities.fitness) {
     $(".icon-result-wrapper").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/Fitness Black and White-01.png" height="70px" width="69px"> ');
   }
-  if(dormObj.amenities['computerLab']) {
+  if(dormObj.amenities.computerLab) {
     $(".icon-result-wrapper").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/Computer Black and White-01.png" height="70px" width="69px"> ');
   }
-  if(dormObj.amenities['stallBR']) {
+  if(dormObj.amenities.stallBR) {
     $(".icon-result-wrapper").append(' <img src="http://spectrum.columbiaspectator.com/shaft_map/img/bathroom stall icon copy.png" height="70px" width="69px"> ');
   }
 
   //back to menu button
   $(".housing-info-body").append("<div class='goBack'> Back to menu</div>");
   $(".goBack").click(function(){
-    if (Shaft.activeLocation!=null){
+    if (Shaft.activeLocation!==null){
       if (Shaft.DormObjectMap[Shaft.activeLocation].school=="Columbia"){
         $("#" + Shaft.activeLocation).css("fill","#007fb2");
       }
@@ -109,10 +118,16 @@ function appendFilterResults(){
   }
 }
 
+/***********************************************************************
+Click/hover interactions for map and filter buttons
+************************************************************************/
+
 //Make filter results clickable for more information
+//List of dorms on left sidebar
 function makeClickableResults(dorm){
+  //Change color of clicked dorm to orange, change back to original color for any active buildings
  $("."+dorm).on("click", function(){     
-      if (Shaft.activeLocation!=null){
+      if (Shaft.activeLocation!==null){
       if (Shaft.DormObjectMap[Shaft.activeLocation].school=="Columbia"){
         $("#" + Shaft.activeLocation).css("fill","#007fb2");
       }
@@ -122,7 +137,7 @@ function makeClickableResults(dorm){
     }
     $("#" + dorm).css("fill","rgb(255, 200, 98)");
     Shaft.activeLocation=dorm;
-    appendInfo(dorm) 
+    appendInfo(dorm); 
   });
 }
 
@@ -137,6 +152,7 @@ function makeClickable(id, dorm) {
    $("#" + id).css("fill","rgb(255, 200, 98)");
    $("#" + id).css("cursor","pointer");
   });
+  //return to original dorm color (blue=Columbia #007fb2, purple=Barnard #803E98)
   $("#" + id).on("mouseout", function (e){
     if (id!=Shaft.activeLocation){
     if (isBlue){
@@ -151,7 +167,7 @@ function makeClickable(id, dorm) {
 
   //change active building color to orange
   $("#" + id).on("click", function(){ 
-    if (Shaft.activeLocation!=null){
+    if (Shaft.activeLocation!==null){
       //If user clicks on another building while a building is still active, change color back to its original
       if (Shaft.DormObjectMap[Shaft.activeLocation].school=="Columbia"){
         $("#" + Shaft.activeLocation).css("fill","#007fb2");
@@ -191,7 +207,10 @@ function makeClickableFilter(id, filter) {
   });
 }
 
-//add a filter to search criteria
+/***********************************************************************
+Results filtering logic
+************************************************************************/
+//add a filter to criteria
 function addFilter(filter){
   var addedFilter=false;
   for (var i in Shaft.filterCriteria){
@@ -224,7 +243,7 @@ function matchDorm(filter, isActive){
   }
 
   //empty matchedDorms
-  Shaft.MatchedDorms=[]
+  Shaft.MatchedDorms=[];
   //has to satisfy all conditions for it to be true
   for (var dorm in Shaft.DormObjectMap){
     var isMatch=true;
@@ -243,45 +262,9 @@ function matchDorm(filter, isActive){
   appendFilterResults();
 }
 
-makeClickableFilter('single', 'single');
-makeClickableFilter('double', 'double');
-makeClickableFilter('ac', 'ac');
-makeClickableFilter('fitness', 'fitness');
-makeClickableFilter('musicRoom', 'musicRoom');
-makeClickableFilter('computerLab', 'computerLab');
-makeClickableFilter('food', 'kitchen');
-makeClickableFilter('stall', 'stallBR');
-makeClickableFilter('blueText', 'columbia');
-makeClickableFilter('purpleText', 'barnard');
-
-
-makeClickable('plimpton', 'plimpton');
-makeClickable('elliot', 'elliot');
-makeClickable('hewitt', 'hewitt');
-makeClickable('sulz', 'sulz');
-makeClickable('claremont', 'claremont');
-makeClickable('ec', 'ec');
-makeClickable('n600w116', 'n600w116');
-makeClickable('n616w116', 'n616w116');
-makeClickable('n620w116', 'n620w116');
-makeClickable('woodbridge', 'woodbridge');
-makeClickable('wien', 'wien');
-makeClickable('furnald', 'furnald');
-makeClickable('schapiro', 'schapiro');
-makeClickable('river', 'river');
-makeClickable('hogan', 'hogan');
-makeClickable('broadway', 'broadway');
-makeClickable('ruggles', 'ruggles');
-makeClickable('nussbaum', 'nussbaum');
-makeClickable('mcbain', 'mcbain');
-makeClickable('watt', 'watt');
-makeClickable('symposium', 'symposium');
-makeClickable('n601w110', 'n601w110');
-makeClickable('harmony', 'harmony');
-makeClickable('cathedral', 'cathedral');
-
-
-/// data stuff
+/***********************************************************************
+Dorm Data, should be moved to separate json file
+************************************************************************/
 
 var schapiro= {
   'name': "Schapiro",
@@ -319,7 +302,7 @@ var schapiro= {
       '8-person': false
 
     }
-}
+};
 
 var woodbridge= {
   'name': "Woodbridge",
@@ -358,7 +341,7 @@ var woodbridge= {
       '8-person': false
 
     }
-}
+};
 
 var plimpton = {
   'name': "Plimpton",
@@ -388,7 +371,7 @@ var plimpton = {
 
     }
 
-}
+};
 
 var elliot = {
   'name': "Elliot",
@@ -418,7 +401,7 @@ var elliot = {
 
     }
 
-}
+};
 
 var hewitt = {
   'name': "Hewitt",
@@ -447,7 +430,7 @@ var hewitt = {
       '8-person': false
 
     }
-}
+};
 
 var sulz = {
   'name': "Sulzberger Tower",
@@ -477,7 +460,7 @@ var sulz = {
       '8-person': false
 
     }
-}
+};
 
 var claremont = {
   'name': "47 Claremont",
@@ -528,7 +511,7 @@ var claremont = {
       '8-person': false
 
     }
-}
+};
 
 var ec = {
   'name': "East Campus",
@@ -595,7 +578,7 @@ var ec = {
       '8-person': false
 
     }
-}
+};
 
 var n600w116 = {
   'name': "600 W. 116",
@@ -624,7 +607,7 @@ var n600w116 = {
       '8-person': false
 
     }
-}
+};
 
 var n616w116 = {
   'name': "616 W. 116",
@@ -653,7 +636,7 @@ var n616w116 = {
       '8-person': false
 
     }
-}
+};
 
 var n620w116 = {
   'name': "620 W. 116",
@@ -682,7 +665,7 @@ var n620w116 = {
       '8-person': false
 
     }
-}
+};
 
 var wien = {
   'name': "Wien",
@@ -719,7 +702,7 @@ var wien = {
       '8-person': false
 
     }
-}
+};
 
 var furnald = {
   'name': "Furnald",
@@ -753,7 +736,7 @@ var furnald = {
       '8-person': false
 
     }
-}
+};
 
 var river = {
   'name': "River",
@@ -786,7 +769,7 @@ var river = {
       '8-person': false
 
     }
-}
+};
 
 var hogan = {
   'name': "Hogan",
@@ -828,7 +811,7 @@ var hogan = {
       '8-person': false
 
     }
-}
+};
 
 var broadway = {
   'name': "Broadway",
@@ -865,7 +848,7 @@ var broadway = {
       '8-person': false
 
     }
-}
+};
 
 var ruggles = {
   'name': "Ruggles",
@@ -908,7 +891,7 @@ var ruggles = {
       '8-person': true
 
     }
-}
+};
 
 var nussbaum = {
   'name': "Nussbaum (600 W. 113)",
@@ -946,7 +929,7 @@ var nussbaum = {
       '8-person': false
 
     }
-}
+};
 
 var mcbain = {
   'name': "McBain",
@@ -983,7 +966,7 @@ var mcbain = {
       '8-person': false
 
     }
-}
+};
 
 var watt = {
   'name': "Watt",
@@ -1030,7 +1013,7 @@ var watt = {
       '8-person': false
 
     }
-}
+};
 
 var symposium ={
   'name': "Symposium (548 W. 113)",
@@ -1063,7 +1046,7 @@ var symposium ={
       '8-person': false
 
     }
-}
+};
 
 var n601w110 = {
   'name': "110 (601 W. 110)",
@@ -1092,7 +1075,7 @@ var n601w110 = {
       '8-person': true
 
     }
-}
+};
 
 var harmony = {
   'name': "Harmony",
@@ -1129,7 +1112,7 @@ var harmony = {
       '8-person': false
 
     }
-}
+};
 
 var cathedral = {
   'name': "Cathedral Gardens",
@@ -1158,33 +1141,74 @@ var cathedral = {
       '8-person': false
 
     }
-}
-Shaft.DormObjectMap['broadway']= new Shaft.DormObject(broadway);
-Shaft.DormObjectMap['claremont']= new Shaft.DormObject(claremont);
-Shaft.DormObjectMap['furnald']= new Shaft.DormObject(furnald);
-Shaft.DormObjectMap['ec']= new Shaft.DormObject(ec);
-Shaft.DormObjectMap['harmony']= new Shaft.DormObject(harmony);
-Shaft.DormObjectMap['hogan']= new Shaft.DormObject(hogan);
-Shaft.DormObjectMap['mcbain']= new Shaft.DormObject(mcbain);
-Shaft.DormObjectMap['nussbaum']= new Shaft.DormObject(nussbaum);
-Shaft.DormObjectMap['river']= new Shaft.DormObject(river);
-Shaft.DormObjectMap['ruggles']= new Shaft.DormObject(ruggles);
-Shaft.DormObjectMap['schapiro']= new Shaft.DormObject(schapiro);
-Shaft.DormObjectMap['symposium']= new Shaft.DormObject(symposium);
-Shaft.DormObjectMap['watt']= new Shaft.DormObject(watt);
-Shaft.DormObjectMap['wien']= new Shaft.DormObject(wien);
+};
 
-Shaft.DormObjectMap['woodbridge']= new Shaft.DormObject(woodbridge);
-Shaft.DormObjectMap['n601w110']= new Shaft.DormObject(n601w110);
-Shaft.DormObjectMap['n600w116']= new Shaft.DormObject(n600w116);
-Shaft.DormObjectMap['n616w116']= new Shaft.DormObject(n616w116);
-Shaft.DormObjectMap['n620w116']= new Shaft.DormObject(n620w116);
-Shaft.DormObjectMap['cathedral']= new Shaft.DormObject(cathedral);
-Shaft.DormObjectMap['elliot']= new Shaft.DormObject(elliot);
-Shaft.DormObjectMap['hewitt']= new Shaft.DormObject(hewitt);
-Shaft.DormObjectMap['plimpton']= new Shaft.DormObject(plimpton);
-Shaft.DormObjectMap['sulz']= new Shaft.DormObject(sulz);
+/***********************************************************************
+Constructing objects on page
+************************************************************************/
+
+makeClickableFilter('single', 'single');
+makeClickableFilter('double', 'double');
+makeClickableFilter('ac', 'ac');
+makeClickableFilter('fitness', 'fitness');
+makeClickableFilter('musicRoom', 'musicRoom');
+makeClickableFilter('computerLab', 'computerLab');
+makeClickableFilter('food', 'kitchen');
+makeClickableFilter('stall', 'stallBR');
+makeClickableFilter('blueText', 'columbia');
+makeClickableFilter('purpleText', 'barnard');
+
+
+makeClickable('plimpton', 'plimpton');
+makeClickable('elliot', 'elliot');
+makeClickable('hewitt', 'hewitt');
+makeClickable('sulz', 'sulz');
+makeClickable('claremont', 'claremont');
+makeClickable('ec', 'ec');
+makeClickable('n600w116', 'n600w116');
+makeClickable('n616w116', 'n616w116');
+makeClickable('n620w116', 'n620w116');
+makeClickable('woodbridge', 'woodbridge');
+makeClickable('wien', 'wien');
+makeClickable('furnald', 'furnald');
+makeClickable('schapiro', 'schapiro');
+makeClickable('river', 'river');
+makeClickable('hogan', 'hogan');
+makeClickable('broadway', 'broadway');
+makeClickable('ruggles', 'ruggles');
+makeClickable('nussbaum', 'nussbaum');
+makeClickable('mcbain', 'mcbain');
+makeClickable('watt', 'watt');
+makeClickable('symposium', 'symposium');
+makeClickable('n601w110', 'n601w110');
+makeClickable('harmony', 'harmony');
+makeClickable('cathedral', 'cathedral');
+
+Shaft.DormObjectMap.broadway = new Shaft.DormObject(broadway);
+Shaft.DormObjectMap.claremont = new Shaft.DormObject(claremont);
+Shaft.DormObjectMap.furnald = new Shaft.DormObject(furnald);
+Shaft.DormObjectMap.ec = new Shaft.DormObject(ec);
+Shaft.DormObjectMap.harmony = new Shaft.DormObject(harmony);
+Shaft.DormObjectMap.hogan = new Shaft.DormObject(hogan);
+Shaft.DormObjectMap.mcbain = new Shaft.DormObject(mcbain);
+Shaft.DormObjectMap.nussbaum = new Shaft.DormObject(nussbaum);
+Shaft.DormObjectMap.driver = new Shaft.DormObject(river);
+Shaft.DormObjectMap.ruggles = new Shaft.DormObject(ruggles);
+Shaft.DormObjectMap.schapiro = new Shaft.DormObject(schapiro);
+Shaft.DormObjectMap.symposium = new Shaft.DormObject(symposium);
+Shaft.DormObjectMap.watt = new Shaft.DormObject(watt);
+Shaft.DormObjectMap.wien = new Shaft.DormObject(wien);
+
+Shaft.DormObjectMap.woodbridge= new Shaft.DormObject(woodbridge);
+Shaft.DormObjectMap.n601w110 = new Shaft.DormObject(n601w110);
+Shaft.DormObjectMap.n600w116 = new Shaft.DormObject(n600w116);
+Shaft.DormObjectMap.n616w116 = new Shaft.DormObject(n616w116);
+Shaft.DormObjectMap.n620w116 = new Shaft.DormObject(n620w116);
+Shaft.DormObjectMap.cathedral = new Shaft.DormObject(cathedral);
+Shaft.DormObjectMap.elliot = new Shaft.DormObject(elliot);
+Shaft.DormObjectMap.hewitt = new Shaft.DormObject(hewitt);
+Shaft.DormObjectMap.plimpton = new Shaft.DormObject(plimpton);
+Shaft.DormObjectMap.sulz = new Shaft.DormObject(sulz);
 
 matchDorm("",false);
-
 
