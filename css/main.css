@@ -60,178 +60,275 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-/***********************************************************************
-Top Nav Styling
-************************************************************************/   
+
+/* ==========================================================================
+    Lead Titles
+   ========================================================================== */   
+body > div.housing-title > a {
+color: rgb(20, 20, 20);
+text-decoration: none;
+}
+body > div.housing-title > a:hover {
+color: gray;
+text-decoration: none;
+}
+
+/* ==========================================================================
+    Bottom Box Ads
+   ========================================================================== */
+   #box-ad {
+margin-top: 2rem;
+/* border: 1px solid gray; */
+float: left;
+margin-right: 1rem;
+}
+
+#box-ad-2 > a > img {
+margin-top: 2rem;
+}
+
+
+/* ==========================================================================
+    Cutoff Grid
+   ========================================================================== */
+.cutoff-title {
+font-weight: 700;
+margin-top: 1rem;
+}
+
+.cutoff-row {
+width: 100%;
+font-size: 0.9rem;
+font-weight: 600;
+}
+.cutoff-type {
+width: 58%;
+float: left;
+}
+.cutoff-cutoff {
+width: 40%;
+float: left;
+}
+/* ==========================================================================
+    Left sidebar
+   ========================================================================== */
+.icon-result-wrapper>img {
+margin-top: 0.25rem;
+}
+
+.icon-result-wrapper {
+display: block;
+clear: left;
+padding-top: 0.5rem;
+}
+
+.housing-info-body>img {
+margin-bottom: 0.25rem;
+}
+
+
+.filter-results {
+clear: both;
+}
+
+.goBack {
+font-size: 1.25rem;
+/* vertical-align: middle; */
+text-align: right;
+/* text-decoration: underline; */
+cursor: pointer;
+color: #3D3D3D;
+margin-top: 0.5rem;
+font-weight: normal;
+
+}
+
+.goBack:hover {
+text-decoration: underline;
+}
+
+.building-details{
+    display: none;
+}
+.purpleBlock {
+height: 1rem;
+width: 1rem;
+background-color: #803e98;
+display: inline-block;
+margin-right: 4px;
+}
+
+.blueBlock {
+display: inline-block;
+height: 1rem;
+width: 1rem;
+background-color: #007fb2;
+margin-right: 4px;
+}
+
+.blueText {
+font-weight: normal;
+text-align:left;
+margin-top: 0.5rem;
+margin-bottom:0.5rem;
+width:12rem;
+}
+.blueText.active, .purpleText.active {
+font-weight: bold;
+}
+
+.blueText:hover,  .purpleText:hover{
+text-decoration: underline;
+cursor:pointer;
+}
+
+#box-ad-id {
+margin-bottom: 1rem;
+}
+
+
+.purpleText {
+font-weight: normal;
+text-align:left;
+margin-bottom:0.5rem;
+width:10rem;
+}
+
+.housing-info {
+padding: 1rem;
+background-color: #b3d4fc;
+margin: 1rem;
+width: 31%;
+text-align: center;
+min-height: 52rem;
+float:left;
+font-family: 'Whitney SSm A', 'Whitney SSm B';
+font-weight: 700;
+font-style: normal
+}
+
+.building-details {
+text-transform: uppercase;
+color: rgb(78, 77, 77);
+font-weight: 600;
+}
+
 .top-nav {
-    padding: 0.5rem;
-    top: 0;
-    background-color: rgb(255, 200, 98);
+padding: 0.5rem;
+top: 0;
+background-color: rgb(255, 200, 98);
 }
 
 body > div.top-nav > div > a > img {
-    width: 100%;
-    height: auto;
+width: 100%;
+height: auto;
 }
 
 .ad {
-    float:left;
-    max-width: 65%;
+float:left;
+max-width: 65%;
 }
 
 body > div.top-nav.clearfix > img {
-    width: 25%;
-    float: left;
-    height: auto;
-    margin-right:7%;
+width: 25%;
+float: left;
+height: auto;
+margin-right:7%;
+}
+
+body > div.title-description > h3 {
+font-size: 1.25em;
+margin-bottom: 0;
+margin-right: 0em;
+font-family: 'Whitney SSm A', 'Whitney SSm B';
+font-weight: 700;
+font-style: normal;
 }
 
 .title-description>p{
     font-family: 'Whitney SSm A', 'Whitney SSm B';
-    font-weight: 500;
-    font-style: normal;
+font-weight: 500;
+font-style: normal;
 }
 
-
-/***********************************************************************
-Top Shaft Titles
-************************************************************************/   
-body > div.housing-title > a {
-    color: rgb(20, 20, 20);
-    text-decoration: none;
-}
-body > div.housing-title > a:hover {
-    color: gray;
-    text-decoration: none;
-}
-body > div.title-description > h3 {
-    font-size: 1.25em;
-    margin-bottom: 0;
-    margin-right: 0em;
-    font-family: 'Whitney SSm A', 'Whitney SSm B';
-    font-weight: 700;
-    font-style: normal;
+.title-description {
+position: absolute;
+right: 0;
+top: 0;
+text-align: right;
+width: 26rem;
+margin-right: 3.5%;
+margin-top: 6.75rem;
+font-size: .9rem;
 }
 
-
-/***********************************************************************
-Bottom box ads
-************************************************************************/   
-#box-ad {
-    margin-top: 2rem;
-    float: left;
-    margin-right: 1rem;
+.housing-title {
+font-size: 5rem;
+text-align: left;
+padding-left: 1rem;
+font-family: 'Whitney SSm A', 'Whitney SSm B';
+font-weight: 800;
+text-transform: uppercase;
 }
 
-#box-ad-2 > a > img {
-    margin-top: 2rem;
-}
-
-/***********************************************************************
-Cutoff Grid
-************************************************************************/ 
-
-.cutoff-title {
-    font-weight: 700;
-    margin-top: 1rem;
-}
-
-.cutoff-row {
-    width: 100%;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-.cutoff-type {
-    width: 58%;
-    float: left;
-}
-.cutoff-cutoff {
-    width: 40%;
-    float: left;
-}
-
-/***********************************************************************
-Left Pane Filters/Icons
-************************************************************************/ 
-.icon-result-wrapper>img {
-    margin-top: 0.25rem;
-}
-
-.icon-result-wrapper {
-    display: block;
-    clear: left;
-    padding-top: 0.5rem;
-}
-
-.purpleBlock {
-    height: 1rem;
-    width: 1rem;
-    background-color: #803e98;
-    display: inline-block;
-    margin-right: 4px;
-}
-
-.blueBlock {
-    display: inline-block;
-    height: 1rem;
-    width: 1rem;
-    background-color: #007fb2;
-    margin-right: 4px;
-}
-
-.blueText {
-    font-weight: normal;
-    text-align:left;
-    margin-top: 0.5rem;
-    margin-bottom:0.5rem;
-    width:12rem;
-}
-.blueText.active, .purpleText.active {
-    font-weight: bold;
-}
-
-.blueText:hover,  .purpleText:hover{
-    text-decoration: underline;
-    cursor:pointer;
-}
-
-.purpleText {
-    font-weight: normal;
-    text-align:left;
-    margin-bottom:0.5rem;
-    width:10rem;
-}
-
-.icon-filters {
-text-align: center;
+.housing-info-title {
+text-align: left;
 font-weight: bold;
+border-bottom: 1px solid gray;
+padding-bottom: .5rem;
 }
 
-.outer-icon-wrap {
-text-align: center;
-padding: 0.5rem;
-width: 100%;
+
+.housing-info-title>span {
+font-weight: normal;
+font-size: 0.8rem;
+text-align: right;
+}
+
+
+.housing-info-body {
+text-align: left;
+font-weight: 500;
+line-height: 1.5;
+
+}
+.housing-info-body>h2{
+    text-transform:uppercase;
+}
+
+
+.spec-logo {
+float: left;
+height: auto;
+width: 25%;
+margin-left: 1rem;
+margin-top: 0.5rem;
+left: 0;
+z-index: 32;
+margin-right: 7%;
+=}
+
+.icon-filters>img {
+width: 56px;
 }
 
 .icon-filters>img {
-    width: 56px;
-}
-
-.icon-filters>img {
-    width: 69px;
-    margin: 0.5rem;
+width: 69px;
+margin: 0.5rem;
 }
 
 .icon {
-    width: 69px;
-    height: 70px;
-    background-size: cover;
-    float:left;
-    cursor:pointer;
+width: 69px;
+height: 70px;
+background-size: cover;
+float:left;
+cursor:pointer;
 }
 
+
 .no-touch .icon:hover, .icon.active{
-    background-image: url("http://spectrum.columbiaspectator.com/shaft_map/img/check_alt-512.png") !important;
+/*    //background-color:rgba(255,255,255,0.7);
+*/    background-image: url("http://spectrum.columbiaspectator.com/shaft_map/img/check_alt-512.png") !important;
     background-size: contain !important;
     background-repeat: no-repeat;
 
@@ -246,152 +343,22 @@ font-size: 0.8rem;
 font-weight: bold;
 }
 
-.icon.stall{
-    width: 71px;
-}
-
-/***********************************************************************
-Building details/map
-************************************************************************/ 
-
-.housing-info-body>img {
-    margin-bottom: 0.25rem;
-}
-
-.filter-results {
-    clear: both;
-}
-
-#credit {
-    position: absolute;
-    right: 0;
-    margin-right: 4%;
-    font-size: .7rem;
-    text-transform: uppercase;
-    color: #808080;
-    width: 53%;
-    text-align: right;
-}
-
-.goBack {
-    font-size: 1.25rem;
-    text-align: right;
-    cursor: pointer;
-    color: #3D3D3D;
-    margin-top: 0.5rem;
-    font-weight: normal;
-}
-
-.goBack:hover {
-    text-decoration: underline;
-}
-
-.building-details{
-    display: none;
-}
-
-#box-ad-id {
-    margin-bottom: 1rem;
-}
-#map-inset {
-    position: absolute;
-    top: 39rem;
-    right: 0;
-    margin: 3rem;
-    margin-right: 6%;
-    width: 15.1%;
-    max-width: 10rem;
-    max-height: 6rem;
-    background-color: white;
-    border: 1px solid black;
-}
-
-
-
-.housing-info {
-    padding: 1rem;
-    background-color: #b3d4fc;
-    margin: 1rem;
-    width: 31%;
-    text-align: center;
-    min-height: 52rem;
-    float:left;
-    font-family: 'Whitney SSm A', 'Whitney SSm B';
-    font-weight: 700;
-    font-style: normal
-}
-
-.building-details {
-    text-transform: uppercase;
-    color: rgb(78, 77, 77);
-    font-weight: 600;
-}
-
-.title-description {
-    position: absolute;
-    right: 0;
-    top: 0;
-    text-align: right;
-    width: 26rem;
-    margin-right: 3.5%;
-    margin-top: 6.75rem;
-    font-size: .9rem;
-}
-
-.housing-title {
-    font-size: 5rem;
-    text-align: left;
-    padding-left: 1rem;
-    font-family: 'Whitney SSm A', 'Whitney SSm B';
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.housing-info-title {
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 1px solid gray;
-    padding-bottom: .5rem;
-}
-
-.housing-info-title>span {
-    font-weight: normal;
-    font-size: 0.8rem;
-    text-align: right;
-}
-
-.housing-info-body {
-    text-align: left;
-    font-weight: 500;
-    line-height: 1.5;
-}
-
-.housing-info-body>h2{
-    text-transform:uppercase;
-}
-
-#shaft_map {
-    height: 36em;
-    width: 60%;
-    float: left;
-    border: 1px solid black;
-    margin-top: 1rem;
-}
-.spec-logo {
-    float: left;
-    height: auto;
-    width: 25%;
-    margin-left: 1rem;
-    margin-top: 0.5rem;
-    left: 0;
-    z-index: 32;
-    margin-right: 7%;
-}
-
 .instructions {
 text-align: center;
 }
 
+.icon-filters {
+text-align: center;
+font-weight: bold;
+}
+
+.outer-icon-wrap {
+text-align: center;
+padding: 0.5rem;
+/* margin: auto; */
+/* margin-right: 1rem; */
+width: 100%;
+}
 .result {
 width: 47%;
 float: left;
@@ -405,12 +372,52 @@ border-radius: 4px;
 font-weight: 600;
 }
 
+.icon.stall{
+    width: 71px;
+}
+
 .no-touch .result:hover{
     background-color:rgb(255, 214, 139);
 }
 
 .full-version {
     display:none;
+}
+
+/* ==========================================================================
+  Main Map
+   ========================================================================== */
+
+#map-inset {
+position: absolute;
+top: 39rem;
+right: 0;
+margin: 3rem;
+margin-right: 6%;
+width: 15.1%;
+max-width: 10rem;
+max-height: 6rem;
+background-color: white;
+border: 1px solid black;
+}
+
+#shaft_map {
+height: 36em;
+width: 60%;
+float: left;
+border: 1px solid black;
+margin-top: 1rem;
+}
+
+#credit {
+position: absolute;
+right: 0;
+margin-right: 4%;
+font-size: .7rem;
+text-transform: uppercase;
+color: #808080;
+width: 53%;
+text-align: right;
 }
 
 svg:not(:root) {
@@ -423,15 +430,14 @@ svg:not(:root) {
    ========================================================================== */
 
 @media all and (max-width: 47em) {
-    
     .housing-info{
-        min-height: 18rem;
+        min-height: 18rem !important;
     }
     body > div.housing-title > a {
         color: white;
     }
     .full-version {
-        display:inherit;
+         display:inherit;
         font-size: .7rem;
         text-transform: uppercase;
         color: #808080;
@@ -445,13 +451,14 @@ svg:not(:root) {
     width: 95%;
     }
 
+
     .title-description {
         display:none;
     }
 
-     #shaft_map {
-        display:inherit ;
-        width:100% ;
+    #shaft_map {
+        display:inherit !important;
+        width:100% !important;
         height:auto;
         border:none;
         border-top:1px solid gray;
@@ -462,28 +469,28 @@ svg:not(:root) {
         display:none;
     }
     #map{
-        display:none ;
+        display:none !important;
     }
     #map-inset{
-        display:none ;
+        display:none !important;
     }
     .instructions{
-        display:none ;
+        display:none !important;
     }
     .housing-title {
-        font-size: 3rem ;
-        text-align: left;
-        background-color: black;
-        color: white;
+    font-size: 3rem !important;
+    text-align: left;
+    background-color: black;
+    color: white;
     }
     .housing-info-title {
-    display:none ;
+    display:none !important;
     }
     .housing-info{
         width: 100%;
         margin: 0;
-        padding: 0;
-        position:relative;
+    padding: 0;
+    position:relative;
     }
     .housing-info-body{
         padding: 1rem;
@@ -494,8 +501,8 @@ svg:not(:root) {
         border:0;
         border-top: 1px solid gray;
         padding:0;
-        padding-top: 1rem ;
-        padding-bottom: 1rem ;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
         font-weight: bold;
         cursor: pointer;
         background-color: rgb(218, 218, 218);
@@ -516,11 +523,9 @@ svg:not(:root) {
         height: auto;
         margin-left:0;
     }
-
-
     .ad {
         float: left;
-        max-width: 100% ;
+        max-width: 100% !important;
     }
     .top-nav {
         width: auto;
@@ -546,7 +551,7 @@ svg:not(:root) {
     #box-ad {
         margin-right:0;
         float:none;
-    }   
+    }
     #box-ad-id {
         text-align: center;
     }
